@@ -68,6 +68,23 @@ class ApiStudentController extends Controller
         return response(['success'=> $success], 200);
     }
 
+    public function updatePassword(Request $request)
+    {
+        $student = auth()->user();
+        $student->password = $request->password;
+        $student->save();
+        return response(['message'=> 'تم تغير كلمة المرور'], 200);
+    }
+
+    public function updateName(Request $request)
+    {
+        $student = auth()->user();
+        $student->name = $request->name;
+        $student->state = $request->state;
+        $student->save();
+        return response(['message'=> 'تم تحديث البيانات','student'=>$student], 200);
+    }
+
     public function sendanswer(Request $request)
     {
         $student = auth()->user();

@@ -34,7 +34,7 @@
 					@if($answer->answer=='op2') الخيار الثاني @endif
 					@if($answer->answer=='op3') الخيار الثالث @endif
 				</td>
-				<td>{{$answer->correct===1?'اجابته صحيحة':'اجابته خاطئة'}}</td>
+				<td>{{$answer->correct==1?'اجابته صحيحة':'اجابته خاطئة'}}</td>
 				<td>{{$answer->created_at->diffForHumans()}}</td>
 			</tr>
 			@endforeach

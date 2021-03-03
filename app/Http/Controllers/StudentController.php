@@ -37,13 +37,14 @@ class StudentController extends Controller
  
     public function edit(Student $student)
     {
-        //
+        return view('student.edit',compact('student'));
     }
 
  
     public function update(Request $request, Student $student)
     {
-        //
+        $student->update($request->all());
+        return redirect(route('student.index'))->with(['status'=>'success','message'=>'تم']);
     }
 
  
