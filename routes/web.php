@@ -24,7 +24,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::get('student/{student}/edit',[StudentController::class,'edit'])->name('student.edit');
-Route::get('student/{student}/update',[StudentController::class,'update'])->name('student.update');
+Route::post('student/{student}/update',[StudentController::class,'update'])->name('student.update');
 Route::get('student/index',[StudentController::class,'index'])->name('student.index');
 Route::post("student/store",[StudentController::class,'store'])->name('student.store');
 

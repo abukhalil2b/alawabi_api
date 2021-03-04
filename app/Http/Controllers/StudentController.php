@@ -23,7 +23,7 @@ class StudentController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request,['name'=>'required','phone'=>'required|unique:students']);
+        $this->validate($request,['phone'=>'required|unique:students']);
         Student::create($request->all());
         return redirect(route('student.index'))->with(['status'=>'success','message'=>'تم']);
     }

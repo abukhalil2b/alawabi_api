@@ -34,17 +34,26 @@
 	        </select>
 	        </div>
 	        <div class="btn-container">
-	        	<button class="btn btn-block btn-primary"><b>حفظ السؤال</b></button>
+	        	<button class="btn btn-block btn-primary mt-3"><b>حفظ السؤال</b></button>
 	        </div>
 	    </form>
 	</div>
 
+<style>
+	img{
+		width: 100px;
+	}
+</style>
 	<div class="container">
 		
 		@foreach($questions as $question)
 		<div class="bar mt-1">
 			<div>السؤال: {{$question->content}}</div>
-			<div>{{$question->url}}</div>
+			<div>
+				@if($question->url)
+				<img src="{{$question->url}}" alt="">
+				@endif
+			</div>
 			<div>(1): {{$question->op1}}</div>
 			<div>(2): {{$question->op2}}</div>
 			<div>(3): {{$question->op3}}</div>
@@ -57,13 +66,13 @@
 			<div>{{$question->active?'السؤال فعال':'السؤال معطل'}}</div>
 			<div class="row justify-content-center">
 				<div class="col-lg-3">
-					<a class="btn btn-sm btn-outline-danger" href="{{route('question.delete',['question'=>$question->id])}}">حذف</a>
+					<a class="mt-5 btn btn-sm btn-outline-danger" href="{{route('question.delete',['question'=>$question->id])}}">حذف</a>
 				</div>
 				<div class="col-lg-3">
-					<a class="btn btn-sm btn-outline-warning" href="{{route('question.toggle',['question'=>$question->id])}}">تعطيل وتغعيل السؤال</a>
+					<a class="mt-5 btn btn-sm btn-outline-warning" href="{{route('question.toggle',['question'=>$question->id])}}">تعطيل وتغعيل السؤال</a>
 				</div>
 				<div class="col-lg-3">
-					<a class="btn btn-sm btn-outline-primary" href="{{route('answer.index',['question'=>$question->id])}}">الإجابات</a>
+					<a class="mt-5 btn btn-sm btn-outline-primary" href="{{route('answer.index',['question'=>$question->id])}}">الإجابات</a>
 				</div>
 			</div>
 		</div>
