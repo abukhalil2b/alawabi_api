@@ -13,7 +13,7 @@ class SponserController extends Controller
     
     public function index()
     {
-        $sponsers = Sponser::all();
+        $sponsers = Sponser::orderby('id','ASC')->get();
         return view('sponser.index',compact('sponsers'));
     }
 
