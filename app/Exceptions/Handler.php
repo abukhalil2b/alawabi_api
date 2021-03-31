@@ -40,9 +40,9 @@ class Handler extends ExceptionHandler
         $this->renderable(function (RouteNotFoundException $e) {
            return response(["message"=>"Route Not Found"],404);
         });
-        $this->renderable(function (QueryException $e) {
-           return response(["message"=>"QueryException"],404);
-        });
+        // $this->renderable(function (QueryException $e) {
+        //    return response(["message"=>"QueryException"],404);
+        // });
         $this->renderable(function (MethodNotAllowedHttpException $e) {
            return response(["message"=>"Method Not Allowed"],404);
         });

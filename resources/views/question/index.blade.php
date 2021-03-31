@@ -63,7 +63,13 @@
 				@if($question->answer=='op2')  الخيار الثاني @endif
 				@if($question->answer=='op3')  الخيار الثالث @endif
 			</div>
-			<div>{{$question->active?'السؤال فعال':'السؤال معطل'}}</div>
+			<div>
+				@if($question->active)
+				<div class="text-success">السؤال فعال</div>
+				@else
+				<div class="text-warning">السؤال معطل</div>
+				@endif
+			</div>
 			<div class="row justify-content-center">
 				<div class="col-lg-3">
 					<a class="mt-5 btn btn-sm btn-outline-danger" href="{{route('question.delete',['question'=>$question->id])}}">حذف</a>

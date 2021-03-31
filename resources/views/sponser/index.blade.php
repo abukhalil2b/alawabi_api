@@ -34,6 +34,7 @@
 	   	<img src="{{$sponser->url}}" alt="img">@endif
 	   	({{$sponser->id}}) - {{$sponser->title}}
 	   	<a href="{{route('sponser.edit',['sponser'=>$sponser->id])}}">تعديل</a>
+	   	<a href="{{route('sponser.toggle',['sponser'=>$sponser->id])}}">تفعيل وتعطيل</a>
 	   </div>
 	   @endforeach
 	</div>

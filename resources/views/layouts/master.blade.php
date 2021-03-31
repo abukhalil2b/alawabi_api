@@ -51,7 +51,9 @@
 			@endforeach
 			@endif
     	</div>	
-    	 <div class="bar mx-1"><a href="{{route('dashboard')}}">الرئيسية</a></div>
+    	 <div class="px-2 mx-1">
+    	 	<a class="btn btn-block btn-secondary" href="{{route('dashboard')}}">الرئيسية</a>
+    	 </div>
         @yield('content')
     </body>
 </html>

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SponserController;
+use App\Http\Controllers\WinnerController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,10 +35,22 @@ Route::post('question/store',[QuestionController::class,'store'])->name('questio
 Route::get('question/{question}/delete',[QuestionController::class,'delete'])->name('question.delete');
 Route::get('question/{question}/toggle',[QuestionController::class,'toggle'])->name('question.toggle');
 
+//sponser
 Route::get('sponser/index',[SponserController::class,'index'])->name('sponser.index');
 Route::post("sponser/store",[SponserController::class,'store'])->name('sponser.store');
 Route::get('sponser/{sponser}/edit',[SponserController::class,'edit'])->name('sponser.edit');
 Route::post("sponser/{sponser}/update",[SponserController::class,'update'])->name('sponser.update');
+Route::get('sponser/{sponser}/toggle',[SponserController::class,'toggle'])->name('sponser.toggle');
 
-
+//answer
 Route::get('answer/index/{question}',[StudentController::class,'answerIndex'])->name('answer.index');
+Route::post('deleteAllAnswer',[StudentController::class,'deleteAllAnswer'])->name('deleteAllAnswer');
+
+//lot
+Route::get('answer/lot',[StudentController::class,'lot'])->name('answer.lot');
+Route::get('answer/shuffle',[StudentController::class,'shuffle'])->name('answer.shuffle');
+
+//winner
+Route::get('winner/{winner}/delete',[WinnerController::class,'delete'])->name('winner.delete');
+Route::get('winner/create',[WinnerController::class,'create'])->name('winner.create');
+Route::post("winner/store",[WinnerController::class,'store'])->name('winner.store');

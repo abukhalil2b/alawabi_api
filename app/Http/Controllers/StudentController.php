@@ -14,7 +14,6 @@ class StudentController extends Controller
         $this->middleware('auth');
     }
 
-  // https://www.youtube.com/watch?v=8Uwn5M6WTe0
     public function index()
     {
         $students = Student::all();
@@ -24,6 +23,7 @@ class StudentController extends Controller
     public function store(Request $request)
     {
         $this->validate($request,['phone'=>'required|unique:students']);
+        $request['password']= $request->phone;
         Student::create($request->all());
         return redirect(route('student.index'))->with(['status'=>'success','message'=>'تم']);
     }
@@ -48,8 +48,24 @@ class StudentController extends Controller
     }
 
  
-    public function destroy(Student $student)
+    public function lot()
     {
-        //
+        $answers = Answer::where('correct',1)->get();
+        return view('lot.answer',compact('answers'));
+    }
+
+    public function shuffle()
+    {
+        $answers = Answer::where('correct',1)->limit(10)->get()->shuffle();
+        return view('lot.shuffle',compact('answers'));
+    }
+
+    public function deleteAllAnswer(Request $request)
+    {
+        if($request->passcode==='123'){
+            Answer::truncate();
+        }
+        
+        return redirect()->back();
     }
 }

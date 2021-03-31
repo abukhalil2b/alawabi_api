@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiStudentController;
+use App\Http\Controllers\ApiSponsorController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -27,3 +28,5 @@ Route::group(['middleware'=>'auth:sanctum'],function(){
 });
 
 Route::post("student/login",[ApiStudentController::class,'login']);
+
+Route::get("sponsors",[ApiSponsorController::class,'sponsor']);

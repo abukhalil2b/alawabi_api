@@ -36,5 +36,12 @@ class SponserController extends Controller
          return redirect(route('sponser.index'))->with(['status'=>'success','message'=>'تم']);
     }
 
+    public function toggle(Sponser $sponser)
+    {
+        $sponser->update(['active'=>!$sponser->active]);
+        return redirect()->back()->with(['status'=>'success','message'=>'تم']);
+    }
+
+
 
 }
