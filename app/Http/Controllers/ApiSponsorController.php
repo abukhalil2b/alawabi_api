@@ -10,7 +10,7 @@ class ApiSponsorController extends Controller
     {
 
         
-        $sponsors = Sponser::whereActive(1)->get();
+        $sponsors = Sponser::whereActive(1)->orderby('id','ASC')->get();
         
            
         $response = [
