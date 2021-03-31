@@ -10,6 +10,7 @@ class Sponser extends Model
 	protected $fillable = [
         'title',
         'url',
+        'descr'
     ];
     use HasFactory;
 }

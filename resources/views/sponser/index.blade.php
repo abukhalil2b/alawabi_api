@@ -15,6 +15,11 @@
 			</div>
 
 			<div class="input-container">
+				الوصف
+			<input class="input" name="descr">
+			</div>
+
+			<div class="input-container">
 				رابط الصورة إن وجد
 			<input class="input" name="url">
 			</div>
@@ -33,6 +38,7 @@
 	   	@if($sponser->url)
 	   	<img src="{{$sponser->url}}" alt="img">@endif
 	   	({{$sponser->id}}) - {{$sponser->title}}
+	   	<div>{{$sponser->descr}}</div>
 	   	<a href="{{route('sponser.edit',['sponser'=>$sponser->id])}}">تعديل</a>
 	   	<a href="{{route('sponser.toggle',['sponser'=>$sponser->id])}}">تفعيل وتعطيل</a>
 	   </div>

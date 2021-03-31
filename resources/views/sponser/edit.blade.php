@@ -10,6 +10,11 @@
 			</div>
 
 			<div class="input-container">
+				الوصف
+			<input class="input" name="descr" value="{{$sponser->descr}}">
+			</div>
+
+			<div class="input-container">
 								رابط الصورة إن وجد
 			<input class="input" name="url" value="{{$sponser->url}}">
 			</div>
