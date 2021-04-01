@@ -17,7 +17,7 @@ class CreateStudentsTable extends Migration
             $table->id();
             $table->string('name')->nullable();
             $table->string('state',10)->nullable();
-            $table->string('phone',8);
+            $table->string('phone',8)->unique();
             $table->string('password');
             $table->timestamps();
         });
