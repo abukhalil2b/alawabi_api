@@ -34,7 +34,7 @@
 
 		
 	   @foreach($sponsers as $sponser)
-	   <div class="bar mt-1">
+	   <div class="bar mt-1 {{$sponser->active==1?'active':''}}">
 	   	@if($sponser->url)
 	   	<img src="{{$sponser->url}}" alt="img">@endif
 	   	({{$sponser->id}}) - {{$sponser->title}}

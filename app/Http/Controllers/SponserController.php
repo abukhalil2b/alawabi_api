@@ -38,7 +38,8 @@ class SponserController extends Controller
 
     public function toggle(Sponser $sponser)
     {
-        $sponser->update(['active'=>!$sponser->active]);
+        $active = $sponser->active?0:1;
+        $sponser->update(['active'=>$active]);
         return redirect()->back()->with(['status'=>'success','message'=>'تم']);
     }
 

@@ -8,7 +8,7 @@
 
 			<div class="input-container">
 				الهاتف
-			<input class="input" name="phone">
+			<input class="input" name="phone" type="number">
 			</div>
 
 			<div class="input-container">

@@ -6,7 +6,7 @@
 			
 			<div class="input-container">
 				الهاتف
-				<input value="{{$student->phone}}" class="input" name="phone">
+				<input value="{{$student->phone}}" class="input" name="phone" type="number">
 			</div>
 
 			<div class="input-container">

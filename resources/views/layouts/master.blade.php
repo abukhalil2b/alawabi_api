@@ -2,6 +2,16 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="rtl">
     <head>
 	    <style>
+	    	.bar2{
+				padding: 2px;
+				text-align: center;
+				border-radius: 6px;
+	    	}
+	    	.success{
+	    		color: #0f5132;
+				background-color: #d1e7dd;
+				border: 0.5px solid #d6d6d6;	
+	    	}
 			.bar{
 				border:1px solid #eee;
 				padding: 5px;
@@ -25,6 +35,9 @@
 			.mt-1{
 				margin-top: 1%;
 			}
+			.active{
+				background-color: #dbffe2;
+			}
 		</style>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -43,7 +56,7 @@
     <body >
     	<div class="container">
 			@if(session('status'))
-			<h4  class="alert alert-{{session('status')}}">{{session('message')}}</h4>
+			<h4  class="bar2 {{session('status')}}">{{session('message')}}</h4>
 			@endif
 			@if($errors->any())
 			@foreach($errors->all() as $error)
