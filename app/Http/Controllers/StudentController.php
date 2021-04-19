@@ -54,10 +54,10 @@ class StudentController extends Controller
         return view('lot.answer',compact('answers'));
     }
 
-    public function shuffle()
+    public function numbers()
     {
-        $answers = Answer::where('correct',1)->limit(10)->get()->shuffle();
-        return view('lot.shuffle',compact('answers'));
+        $numbers = Answer::where('correct',1)->get();
+        return view('lot.numbers',compact('numbers'));
     }
 
     public function deleteAllAnswer(Request $request)

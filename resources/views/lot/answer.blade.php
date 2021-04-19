@@ -7,7 +7,7 @@
 		<button class="btn btn-danger">حذف كل الإجابات</button>
 	</form>
 	<div class="mt-5">
-		<a class="btn btn-success" href="{{route('answer.shuffle')}}">اسحب 10 أسماء بشكل عشوائي</a>
+		<a class="btn btn-success" href="{{route('answer.numbers')}}">اسحب 10 أسماء بشكل عشوائي</a>
 	</div>
 	@forelse($answers as $answer)
 	<div class="py-3">

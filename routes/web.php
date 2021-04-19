@@ -48,7 +48,7 @@ Route::post('deleteAllAnswer',[StudentController::class,'deleteAllAnswer'])->nam
 
 //lot
 Route::get('answer/lot',[StudentController::class,'lot'])->name('answer.lot');
-Route::get('answer/shuffle',[StudentController::class,'shuffle'])->name('answer.shuffle');
+Route::get('answer/numbers',[StudentController::class,'numbers'])->name('answer.numbers');
 
 //winner
 Route::get('winner/{winner}/delete',[WinnerController::class,'delete'])->name('winner.delete');
