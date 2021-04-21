@@ -75,7 +75,7 @@
 قم بحفظ هذا الرقم حتى تصلك الرسائل الجماعية.
 رابط البرنامج:
 https://al-awabi.web.app`);
-	window.open(url + `?phone=00968${number}&text=${message}`)		
+	window.open(url + `?phone=968${number}&text=${message}`)		
 	}
 
 </script>
