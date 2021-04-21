@@ -59,7 +59,9 @@
 					<div class="mt-2" onClick="sendMessage({{$student->phone}})">
 						رسالة تذكير
 					</div>
-
+					<div class="mt-2">
+						<a href="{{route('student.delete',['student'=>$student->id])}}">حذف نهائي</a>
+					</div>
 				</td>
 			</tr>
 			@endforeach

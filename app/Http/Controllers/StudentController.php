@@ -40,6 +40,12 @@ class StudentController extends Controller
         return view('student.edit',compact('student'));
     }
 
+    public function edit(Student $student)
+    {
+        $student->delete();
+        return redirect()->back()->with(['status'=>'success','message'=>'تم']);
+    }
+
  
     public function update(Request $request, Student $student)
     {
