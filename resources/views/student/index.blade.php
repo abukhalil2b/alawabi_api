@@ -47,16 +47,37 @@
 			<tr>
 				<td>{{$student->id}}</td>
 				<td>{{$student->name}}</td>
-				<td>{{$student->phone}}</td>
+				<td>
+					{{$student->phone}}
+					
+				</td>
 				<td>{{$student->state}}</td>
 				<td>{{$student->password}}</td>
 				<td>
-					<a href="{{route('student.edit',['student'=>$student->id])}}">تعديل</a>
+					<a class="mt-2" href="{{route('student.edit',['student'=>$student->id])}}">تعديل</a>
+
+					<div class="mt-2" onClick="sendMessage({{$student->phone}})">
+						رسالة تذكير
+					</div>
+
 				</td>
 			</tr>
 			@endforeach
 		</table>
 	</div>
 
+<script>
+	const sendMessage = (number)=>{
+	var url='https://api.whatsapp.com/send';
+	var message=encodeURIComponent(`السلام عليكم.
+لقد مر الأسبوع الأول  على المسابقة الثقافية  التي تنظمها اللجنة الثقافية بولاية العوابي وأنت لم تشارك معنا هذا العام. 
+اذا كنت تود المشاركة ما عليك إلا دخول البرنامج الإلكتروني وتكتب رقم هاتفك في كل الحقول ثم عندما تدخل تقوم بتحديث بياناتك.
+قم بحفظ هذا الرقم حتى تصلك الرسائل الجماعية.
+رابط البرنامج:
+https://al-awabi.web.app`);
+	window.open(url + `?phone=00968${number}&text=${message}`)		
+	}
+
+</script>
 
 @endsection
