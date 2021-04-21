@@ -56,8 +56,8 @@
 				<td>
 					<a class="mt-2" href="{{route('student.edit',['student'=>$student->id])}}">تعديل</a>
 
-					<div class="mt-2" onClick="sendMessage({{$student->phone}})">
-						رسالة تذكير
+					<div class="my-3">
+						<a onClick="sendMessage({{$student->phone}})" href="">رسالة تذكير</a>
 					</div>
 					<div class="mt-2">
 						<a href="{{route('student.delete',['student'=>$student->id])}}">حذف نهائي</a>
