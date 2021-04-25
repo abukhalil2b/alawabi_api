@@ -12,6 +12,11 @@
 				background-color: #d1e7dd;
 				border: 0.5px solid #d6d6d6;	
 	    	}
+	    	.warning{
+				color: #d28713;
+				background-color: #ffead0;
+				border: 0.5px solid #d6d6d6;	
+	    	}
 			.bar{
 				border:1px solid #eee;
 				padding: 5px;

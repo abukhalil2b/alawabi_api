@@ -28,6 +28,13 @@ class StudentController extends Controller
         return redirect(route('student.index'))->with(['status'=>'success','message'=>'تم']);
     }
 
+    public function search(Request $request)
+    {
+        $this->validate($request,['phone'=>'required']);
+        $students = Student::where('phone', 'like', '%' . $request->phone . '%')->get();
+        return view('student.index',compact('students'));
+    }
+
  
     public function answerIndex(Question $question)
     {
@@ -35,6 +42,16 @@ class StudentController extends Controller
         return view('answer.index',compact('answers','question'));
     }
  
+    public function answerDelete(Request $request, Question $question)
+    {
+        if($request->passcode=='123'){
+            Answer::where('question_id',$question->id)->delete();
+            return redirect()->back()->with(['status'=>'success','message'=>'تم']);
+        }
+        return redirect()->back()->with(['status'=>'warning','message'=>'passcode is missing']);
+        
+    }
+
     public function edit(Student $student)
     {
         return view('student.edit',compact('student'));

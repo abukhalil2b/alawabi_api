@@ -2,6 +2,13 @@
 @section('content')
 	<div class="container">
 		<div class="bar">
+			<form action="{{route('answer.delete',['question'=>$question->id])}}" method="post">
+				@csrf
+				<input class="input" type="number" name="passcode" value="" placeholder="passcode">
+				<button class="btn btn-block btn-danger mt-3" type="submit">حذف</button>	
+			</form>
+		</div>
+		<div class="bar">
 			<div>عدد الطلاب الذين جاوبوا: {{count($answers)}}</div>
 			<div>
 				<div>السؤال: {{$question->content}} </div>
@@ -35,9 +42,8 @@
 					@if($answer->answer=='op3') الخيار الثالث @endif
 				</td>
 				<td>{{$answer->correct==1?'اجابته صحيحة':'اجابته خاطئة'}}</td>
-				<td>{{$answer->created_at->diffForHumans()}}</td>
+				<td>@if($answer->created_at){{$answer->created_at->diffForHumans()}}@endif</td>
 			</tr>
 			@endforeach
 		</table>
 	</div>
-@endsection

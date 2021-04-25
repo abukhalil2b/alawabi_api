@@ -29,6 +29,7 @@ Route::get('student/{student}/edit',[StudentController::class,'edit'])->name('st
 Route::post('student/{student}/update',[StudentController::class,'update'])->name('student.update');
 Route::get('student/index',[StudentController::class,'index'])->name('student.index');
 Route::post("student/store",[StudentController::class,'store'])->name('student.store');
+Route::post("student/search",[StudentController::class,'search'])->name('student.search');
 
 Route::get('question/index',[QuestionController::class,'index'])->name('question.index');
 Route::post('question/store',[QuestionController::class,'store'])->name('question.store');
@@ -45,6 +46,7 @@ Route::get('sponser/{sponser}/toggle',[SponserController::class,'toggle'])->name
 
 //answer
 Route::get('answer/index/{question}',[StudentController::class,'answerIndex'])->name('answer.index');
+Route::post('answer/delete/{question}',[StudentController::class,'answerDelete'])->name('answer.delete');
 Route::post('deleteAllAnswer',[StudentController::class,'deleteAllAnswer'])->name('deleteAllAnswer');
 
 //lot

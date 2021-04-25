@@ -6,8 +6,9 @@
 		<input type="number" name="passcode" class="form-control my-3" placeholder="passcode">
 		<button class="btn btn-danger">حذف كل الإجابات</button>
 	</form>
+	<hr>
 	<div class="mt-5">
-		<a class="btn btn-success" href="{{route('answer.numbers')}}">اسحب 10 أسماء بشكل عشوائي</a>
+		<a class="btn btn-success" href="{{route('answer.numbers')}}">سحب أرقام الهواتف الاجابات الصحيحة</a>
 	</div>
 	@forelse($answers as $answer)
 	<div class="py-3">

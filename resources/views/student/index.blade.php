@@ -4,8 +4,6 @@
 	<div class="container">
 		<form action="{{route('student.store')}}" method="post">
 			@csrf
-			
-
 			<div class="input-container">
 				الهاتف
 			<input class="input" name="phone" type="number">
@@ -31,6 +29,21 @@
 	font-size:12px;
 }
 </style>
+
+	<hr>
+
+	<div class="container">
+		<form action="{{route('student.search')}}" method="post">
+			@csrf
+			<div class="input-container">
+				الهاتف
+			<input class="input" name="phone" type="number">
+			</div>
+			<div class="btn-container">
+				<button class="btn btn-info"><b>بحث </b></button>
+			</div>
+		</form>
+	</div>
 
 	<div class="container">
 		<div class="bar">عدد الطلاب: {{count($students)}}</div>
