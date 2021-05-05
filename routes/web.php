@@ -34,6 +34,7 @@ Route::post("student/search",[StudentController::class,'search'])->name('student
 Route::get('question/index',[QuestionController::class,'index'])->name('question.index');
 Route::post('question/store',[QuestionController::class,'store'])->name('question.store');
 
+Route::get('question/{question}/show',[QuestionController::class,'show'])->name('question.show');
 Route::get('question/{question}/delete',[QuestionController::class,'delete'])->name('question.delete');
 Route::get('question/{question}/toggle',[QuestionController::class,'toggle'])->name('question.toggle');
 

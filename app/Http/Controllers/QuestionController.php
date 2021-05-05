@@ -31,6 +31,11 @@ class QuestionController extends Controller
         return redirect(route('question.index'))->with(['status'=>'success','message'=>'تم']);
     }
 
+    public function show(Question $question)
+    {
+        return view('question.show',compact('question'));
+    }
+
     public function delete(Question $question)
     {
         $question->delete();

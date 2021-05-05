@@ -21,6 +21,7 @@
 				border:1px solid #eee;
 				padding: 5px;
 				border-radius:4px;
+				box-shadow: 0px 0px 2px 0px #afb0b1;
 			}
 			.container{
 				padding: 10px;
@@ -43,6 +44,10 @@
 			.active{
 				background-color: #dbffe2;
 			}
+			.bg-lightgreen{
+				background-color: #dbffe2;
+			}
+
 		</style>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">

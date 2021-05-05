@@ -47,8 +47,13 @@
 	<div class="container">
 		
 		@foreach($questions as $question)
-		<div class="bar mt-1">
-			<div>السؤال: {{$question->content}}</div>
+		<div class="bar mt-3">
+			<div class="bar">
+				السؤال: 
+				<a href="{{route('question.show',['question'=>$question->id])}}">
+					{{$question->content}}
+				</a>
+			</div>
 			<div>
 				@if($question->url)
 				<img src="{{$question->url}}" alt="">
@@ -63,7 +68,7 @@
 				@if($question->answer=='op2')  الخيار الثاني @endif
 				@if($question->answer=='op3')  الخيار الثالث @endif
 			</div>
-			<div>
+			<div class="{{$question->active?'bg-lightgreen':''}}" >
 				@if($question->active)
 				<div class="text-success">السؤال فعال</div>
 				@else
@@ -71,13 +76,10 @@
 				@endif
 			</div>
 			<div class="row justify-content-center">
-				<div class="col-lg-3">
-					<a class="mt-5 btn btn-sm btn-outline-danger" href="{{route('question.delete',['question'=>$question->id])}}">حذف</a>
-				</div>
-				<div class="col-lg-3">
+				<div class="col-lg-2">
 					<a class="mt-5 btn btn-sm btn-outline-warning" href="{{route('question.toggle',['question'=>$question->id])}}">تعطيل وتغعيل السؤال</a>
 				</div>
-				<div class="col-lg-3">
+				<div class="col-lg-2">
 					<a class="mt-5 btn btn-sm btn-outline-primary" href="{{route('answer.index',['question'=>$question->id])}}">الإجابات</a>
 				</div>
 			</div>
