@@ -22,9 +22,9 @@ class DatabaseSeeder extends Seeder
 			'password'=>Hash::make('El200@200')
 		]);
 
-    foreach($students as $student){
-        Student::create($student);
-    }
+    // foreach($students as $student){
+    //     Student::create($student);
+    // }
 
     }
 

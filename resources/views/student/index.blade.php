@@ -21,7 +21,12 @@
 			
 			 <div class="input-container">
 			 	الولاية
-			<input class="input" name="state">
+			 	<select class="input" name="state_id">
+			 		<option value=""></option>
+			 		@foreach($states as $state)
+			 		<option value="{{$state->id}}">{{$state->name}}</option>}
+			 		@endforeach
+			 	</select>
 			</div>
 			كلمة المرور نفس رقم الهاتف
 			<div class="btn-container">

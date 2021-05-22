@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use App\Models\Answer;
 use App\Models\Question;
+use App\Models\State;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -17,7 +18,8 @@ class StudentController extends Controller
     public function index()
     {
         $students = Student::all();
-        return view('student.index',compact('students'));
+        $states = State::all();
+        return view('student.index',compact('students','states'));
     }
 
     public function store(Request $request)
