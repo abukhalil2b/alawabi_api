@@ -1,5 +1,10 @@
 @extends('layouts.master')
 @section('content')
+<style>
+.text-xs{
+	font-size:12px;
+}
+</style>
 
 	<div class="container">
 		<form action="{{route('student.store')}}" method="post">
@@ -24,12 +29,10 @@
 			</div>
 		</form>
 	</div>
-<style>
-.text-xs{
-	font-size:12px;
-}
-</style>
 
+	<hr>
+	<a class="m-3" href="{{route('student.numberlist')}}">numberlist</a>
+	<a class="m-3" href="{{route('student.info')}}">info</a>
 	<hr>
 
 	<div class="container">

@@ -91,4 +91,17 @@ class StudentController extends Controller
         
         return redirect()->back();
     }
+
+    
+    public function numberlist()
+    {
+        $numberlist = Student::all();
+        return view('student.numberlist',compact('numberlist'));
+    }
+
+    public function info()
+    {
+        $students = Student::all();
+        return view('student.info',compact('students'));
+    }
 }

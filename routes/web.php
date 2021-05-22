@@ -30,6 +30,8 @@ Route::post('student/{student}/update',[StudentController::class,'update'])->nam
 Route::get('student/index',[StudentController::class,'index'])->name('student.index');
 Route::post("student/store",[StudentController::class,'store'])->name('student.store');
 Route::post("student/search",[StudentController::class,'search'])->name('student.search');
+Route::get("student/numberlist",[StudentController::class,'numberlist'])->name('student.numberlist');
+Route::get("student/info",[StudentController::class,'info'])->name('student.info');
 
 Route::get('question/index',[QuestionController::class,'index'])->name('question.index');
 Route::post('question/store',[QuestionController::class,'store'])->name('question.store');
