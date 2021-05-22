@@ -101,7 +101,7 @@ class StudentController extends Controller
 
     public function info()
     {
-        $students = Student::all();
+        $students = Student::where('name','<>',null)->get();
         return view('student.info',compact('students'));
     }
 }
