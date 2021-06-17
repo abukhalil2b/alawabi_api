@@ -11,9 +11,6 @@ class ApiStudentController extends Controller
     public function login(Request $request)
     {
         $response = [
-            'status'=>'not authenticated',
-            'student' => null,
-            'lastActiveQuestion' => null,
             'token' => null
         ];
 
@@ -27,28 +24,11 @@ class ApiStudentController extends Controller
     
         $token = $student->createToken('student')->plainTextToken;
 
-        $lastActiveQuestion = Question::whereActive(1)->first();
-        $status='no question';
-        if($lastActiveQuestion){
-            $answer = Answer::where(['question_id'=>$lastActiveQuestion->id,'phone'=>$student->phone])->first();
-            if($answer){
-                $status='answered';
-                $lastActiveQuestion=null;
-            }else{
-                $status='new question';
-            }
-            
-        }
-           
         $response = [
-            'status'=>$status,
-            'student' => $student,
-            'lastActiveQuestion' => $lastActiveQuestion,
             'token' => $token
         ];
     
         return response($response, 201);
-        // return response($response, 201,JSON_FORCE_OBJECT);
     }
 
     public function getQuestion()
@@ -57,7 +37,6 @@ class ApiStudentController extends Controller
             'status'=>'not authenticated',
             'student' => null,
             'lastActiveQuestion' => null,
-            'token' => null
         ];
 
         $student = auth()->user();
