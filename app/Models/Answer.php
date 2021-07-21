@@ -12,4 +12,7 @@ class Answer extends Model
     public function student(){
     	return $this->belongsTo(Student::class,'phone','phone');
     }
+    public function question(){
+    	return $this->belongsTo(Question::class);
+    }
 }

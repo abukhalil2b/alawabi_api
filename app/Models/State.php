@@ -10,5 +10,6 @@ class State extends Model
 	protected $fillable = [
         'name',
     ];
+    public $timestamps=false;
     use HasFactory;
 }

@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ApiStudentController;
 use App\Http\Controllers\ApiSponsorController;
+use App\Http\Controllers\ApiUserController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,14 +20,18 @@ use App\Http\Controllers\ApiSponsorController;
 //     return $request->user();
 // });
 
+
 Route::group(['middleware'=>'auth:sanctum'],function(){
+	Route::get("get_student_info",[ApiStudentController::class,'getStudentInfo']);
 	Route::post("sendanswer",[ApiStudentController::class,'sendanswer']);
-	Route::post("getquestion",[ApiStudentController::class,'getQuestion']);
+	Route::get("get_question",[ApiStudentController::class,'getQuestion']);
 	Route::post("logout",[ApiStudentController::class,'logout']);
-	Route::post("updatepassword",[ApiStudentController::class,'updatePassword']);
-	Route::post("updatename",[ApiStudentController::class,'updateName']);
+	Route::post("update_student_info",[ApiStudentController::class,'updateStudentInfo']);
+	Route::post("update_student_password",[ApiStudentController::class,'updateStudentPassword']);
 });
 
 Route::post("student/login",[ApiStudentController::class,'login']);
 
 Route::get("sponsors",[ApiSponsorController::class,'sponsor']);
+
+Route::get("states",[ApiStudentController::class,'states']);
