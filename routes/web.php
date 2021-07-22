@@ -56,7 +56,3 @@ Route::post('deleteAllAnswer',[StudentController::class,'deleteAllAnswer'])->nam
 Route::get('answer/lot',[StudentController::class,'lot'])->name('answer.lot');
 Route::get('answer/numbers',[StudentController::class,'numbers'])->name('answer.numbers');
 
-//winner
-Route::get('winner/{winner}/delete',[WinnerController::class,'delete'])->name('winner.delete');
-Route::get('winner/create',[WinnerController::class,'create'])->name('winner.create');
-Route::post("winner/store",[WinnerController::class,'store'])->name('winner.store');
