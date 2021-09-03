@@ -22,24 +22,27 @@ class ApiStudentController extends Controller
         $student= Student::wherePhone($request->phone)->first();
 
         if(!$student){
-             return response($response, 201);
-         }elseif ($request->password!=$student->password) {
-            return response($response, 201);
+             return response($response, 200);
+         }elseif($request->password!=$student->password) {
+            return response($response, 200);
         }
     
         $token = $student->createToken('student')->plainTextToken;
 
         $response = [
-            'token' => $token
+            'token' => $token,
+            'student'=> new StudentResource($student)
         ];
     
         return response($response, 201);
     }
+
     public function logout(Request $request)
     {
         $success = auth()->user()->tokens()->delete();
         return response(['success'=> $success], 201);
     }
+
     public function getQuestion()
     {
         //status =>  noQuestion - answered - newQuestion
@@ -118,5 +121,12 @@ class ApiStudentController extends Controller
     public function states(){
         return State::all();
     }
+
+    public function getInitialValues(){
+        $response['appVersion']=1;
+        $response['logoTitle']='مسابقة من إعداد اللجنة الإجتماعية بفريق إتحاد العوابي';
+        return response($response ,201);
+    }
+
 
 }

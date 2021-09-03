@@ -55,7 +55,7 @@
 
 	<div class="container">
 		<div class="bar">عدد الطلاب: {{count($students)}}</div>
-		<table class="table text-xs">
+		<table class=" text-xs table-bordered table">
 			<tr>
 				<td>التسلسل</td>
 				<td>الإسم</td>
@@ -72,7 +72,7 @@
 					{{$student->phone}}
 					
 				</td>
-				<td>{{$student->state}}</td>
+				<td>{{$student->state->name}}</td>
 				<td>{{$student->password}}</td>
 				<td>
 					<a class="mt-2" href="{{route('student.edit',['student'=>$student->id])}}">تعديل</a>
@@ -81,7 +81,7 @@
 						رسالة تذكير
 					</div>
 					<div class="mt-2">
-						<a href="{{route('student.delete',['student'=>$student->id])}}">حذف نهائي</a>
+						<a href="{{route('student.show_delete_form',['student'=>$student->id])}}">حذف</a>
 					</div>
 				</td>
 			</tr>

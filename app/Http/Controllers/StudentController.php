@@ -59,6 +59,12 @@ class StudentController extends Controller
         return view('student.edit',compact('student'));
     }
 
+
+    public function showDeleteForm(Student $student)
+    {
+        return view('student.confirm_delete',compact('student'));
+    }
+
     public function delete(Student $student)
     {
         $student->delete();

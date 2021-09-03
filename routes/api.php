@@ -25,11 +25,12 @@ Route::group(['middleware'=>'auth:sanctum'],function(){
 	Route::get("get_student_info",[ApiStudentController::class,'getStudentInfo']);
 	Route::post("sendanswer",[ApiStudentController::class,'sendanswer']);
 	Route::get("get_question",[ApiStudentController::class,'getQuestion']);
-	Route::post("logout",[ApiStudentController::class,'logout']);
+	Route::get("logout",[ApiStudentController::class,'logout']);
 	Route::post("update_student_info",[ApiStudentController::class,'updateStudentInfo']);
 	Route::post("update_student_password",[ApiStudentController::class,'updateStudentPassword']);
 });
 
+Route::get("get_initial_values",[ApiStudentController::class,'getInitialValues']);
 Route::post("student/login",[ApiStudentController::class,'login']);
 
 Route::get("sponsors",[ApiSponsorController::class,'sponsor']);
