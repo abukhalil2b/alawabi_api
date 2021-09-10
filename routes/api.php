@@ -30,9 +30,9 @@ Route::group(['middleware'=>'auth:sanctum'],function(){
 	Route::post("update_student_password",[ApiStudentController::class,'updateStudentPassword']);
 });
 
-Route::get("get_initial_values",[ApiStudentController::class,'getInitialValues']);
+
 Route::post("student/login",[ApiStudentController::class,'login']);
 
 Route::get("sponsors",[ApiSponsorController::class,'sponsor']);
-
+Route::get("get_app_version",[ApiStudentController::class,'getAppVersion']);
 Route::get("states",[ApiStudentController::class,'states']);

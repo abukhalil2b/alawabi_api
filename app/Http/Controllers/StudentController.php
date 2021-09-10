@@ -32,9 +32,10 @@ class StudentController extends Controller
 
     public function search(Request $request)
     {
+        $states = State::all();
         $this->validate($request,['phone'=>'required']);
         $students = Student::where('phone', 'like', '%' . $request->phone . '%')->get();
-        return view('student.index',compact('students'));
+        return view('student.index',compact('students','states'));
     }
 
  
