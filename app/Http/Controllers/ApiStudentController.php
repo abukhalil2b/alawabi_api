@@ -37,7 +37,7 @@ class ApiStudentController extends Controller
         return [
             'studentInfoNeedUpdate'=>$studentInfoNeedUpdate,
             'status'=>$status,
-            'lastActiveQuestion'=>new QuestionResource($lastActiveQuestion),
+            'lastActiveQuestion'=>$lastActiveQuestion?new QuestionResource($lastActiveQuestion):null,
             'answer'=>$yourAnswer,
             'student'=> new StudentResource($student),
         ];
