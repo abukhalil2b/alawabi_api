@@ -72,7 +72,7 @@
 					{{$student->phone}}
 					
 				</td>
-				<td>{{$student->state->name}}</td>
+				<td>@if($student->state){{$student->state->name}}@endif</td>
 				<td>{{$student->password}}</td>
 				<td>
 					<a class="mt-2" href="{{route('student.edit',['student'=>$student->id])}}">تعديل</a>
