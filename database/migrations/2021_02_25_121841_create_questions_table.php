@@ -21,16 +21,12 @@ class CreateQuestionsTable extends Migration
             $table->string('op2');
             $table->string('op3');
             $table->string('answer');
-            $table->boolean('active')->default(false);
+            $table->integer('questiongroup_id');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+    
     public function down()
     {
         Schema::dropIfExists('questions');

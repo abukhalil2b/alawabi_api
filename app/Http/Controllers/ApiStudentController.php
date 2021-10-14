@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Models\Answer;
+use App\Models\Questiongroup;
 use App\Models\State;
 use App\Models\Question;
 use App\Http\Resources\AnswerResource;
@@ -15,16 +16,22 @@ class ApiStudentController extends Controller
 {
     private function getStudentData($student){
         $status='';
-        $yourAnswer=null;
+        $yourAnswers=[];
         $studentInfoNeedUpdate=false;
-        $lastActiveQuestion = Question::whereActive(1)->first();
-       
-        if($lastActiveQuestion){
+        $questiongroup = Questiongroup::whereActive(1)->first();
+       $lastActiveQuestions =[];
+       $options=[];
+        if($questiongroup){
             $status='newQuestion';
-            $answer = Answer::where(['question_id'=>$lastActiveQuestion->id,'phone'=>$student->phone])->first();
-            if($answer){
-                $yourAnswer = new AnswerResource($answer);
-                $status='answered';
+            $lastActiveQuestions = $questiongroup->questions()->get();
+            $alreadyAnswered = Answer::where(['questiongroup_id'=>$questiongroup->id,'phone'=>$student->phone])->first();
+            if($alreadyAnswered){
+                $status='alreadyAnswered';
+                $yourAnswers = json_decode($alreadyAnswered->answers);
+                
+                foreach($questiongroup->questions()->get() as $key => $question){
+                    array_push($options, $question[$yourAnswers[$key]]);
+                }
             }
         }else{
             $status='noQuestion';
@@ -37,8 +44,8 @@ class ApiStudentController extends Controller
         return [
             'studentInfoNeedUpdate'=>$studentInfoNeedUpdate,
             'status'=>$status,
-            'lastActiveQuestion'=>$lastActiveQuestion?new QuestionResource($lastActiveQuestion):null,
-            'answer'=>$yourAnswer,
+            'lastActiveQuestions'=>QuestionResource::collection($lastActiveQuestions),
+            'yourAnswers'=>$options,
             'student'=> new StudentResource($student),
         ];
     }
@@ -112,15 +119,33 @@ class ApiStudentController extends Controller
 
     public function sendanswer(Request $request)
     {
+        
         $student = auth()->user();
-        $this->validate($request,['answer'=>'required']);
-        $question = Question::whereActive(1)->first();
-        $correct = $question->answer===$request->answer?1:0;
-        $alreadyAnswer = Answer::where(['question_id'=>$question->id,'phone'=>$student->phone])->first();
-        if($alreadyAnswer){
+        $this->validate($request,['answers'=>'required']);
+        $questiongroup = Questiongroup::whereActive(1)->first();
+        $answers = $questiongroup->questions()->get();
+        
+        $correct = 1;
+        $recievedAnswers = json_decode($request->answers);
+        
+        foreach ($recievedAnswers as $key => $recievedAnswer) {
+            if($recievedAnswer != $answers[$key]['answer']){
+                $correct = 0;
+            }
+        }
+       
+        $alreadyAnswered = Answer::where(['questiongroup_id'=>$questiongroup->id,'phone'=>$student->phone])->first();
+
+        if($alreadyAnswered){
             return response(['message'=> 'تم الإجابة سابقاً'], 200);
         }
-        $answer = Answer::create(['phone'=>$student->phone,'question_id'=>$question->id,'answer'=>$request->answer,'correct'=>$correct]);
+        // return json_encode($recievedAnswers);
+        $answer = Answer::create([
+            'phone'=>$student->phone,
+            'questiongroup_id'=>$questiongroup->id,
+            'answers'=>json_encode($recievedAnswers),
+            'correct'=>$correct
+        ]);
         if($answer)
         return response(['message'=> 'شكرا، تم استلام الإجابة','status'=>'thankYou'], 200);
         else

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Student;
 use App\Models\Answer;
+use App\Models\Questiongroup;
 use App\Models\Question;
 use App\Models\State;
 use Illuminate\Http\Request;
@@ -39,16 +40,16 @@ class StudentController extends Controller
     }
 
  
-    public function answerIndex(Question $question)
+    public function answerIndex(Questiongroup $questiongroup)
     {
-        $answers = Answer::where('question_id',$question->id)->get();
-        return view('answer.index',compact('answers','question'));
+        $answers = Answer::where('questiongroup_id',$questiongroup->id)->get();
+        return view('answer.index',compact('answers','questiongroup'));
     }
  
-    public function answerDelete(Request $request, Question $question)
+    public function answerDelete(Request $request, Questiongroup $questiongroup)
     {
         if($request->passcode=='123'){
-            Answer::where('question_id',$question->id)->delete();
+            Answer::where('questiongroup_id',$questiongroup->id)->delete();
             return redirect()->back()->with(['status'=>'success','message'=>'تم']);
         }
         return redirect()->back()->with(['status'=>'warning','message'=>'passcode is missing']);

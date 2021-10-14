@@ -2,7 +2,11 @@
 @section('content')
 
 	<div class="container">
-	   
+		
+	   <div class="bar">
+	   	{{$questiongroup->title}}
+	   </div>
+
 	   <form action="{{route('question.store')}}" method="post">
 	        @csrf
 	        <div class="input-container">
@@ -34,6 +38,7 @@
 	        </select>
 	        </div>
 	        <div class="btn-container">
+	        	<input type="hidden" name="questiongroup_id" value="{{$questiongroup->id}}">
 	        	<button class="btn btn-block btn-primary mt-3"><b>حفظ السؤال</b></button>
 	        </div>
 	    </form>
@@ -68,21 +73,8 @@
 				@if($question->answer=='op2')  الخيار الثاني @endif
 				@if($question->answer=='op3')  الخيار الثالث @endif
 			</div>
-			<div class="{{$question->active?'bg-lightgreen':''}}" >
-				@if($question->active)
-				<div class="text-success">السؤال فعال</div>
-				@else
-				<div class="text-warning">السؤال معطل</div>
-				@endif
-			</div>
-			<div class="row justify-content-center">
-				<div class="col-lg-2">
-					<a class="mt-5 btn btn-sm btn-outline-warning" href="{{route('question.toggle',['question'=>$question->id])}}">تعطيل وتغعيل السؤال</a>
-				</div>
-				<div class="col-lg-2">
-					<a class="mt-5 btn btn-sm btn-outline-primary" href="{{route('answer.index',['question'=>$question->id])}}">الإجابات</a>
-				</div>
-			</div>
+			
+
 		</div>
 		@endforeach
 	</div>

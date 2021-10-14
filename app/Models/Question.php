@@ -7,9 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Question extends Model
 {
-	protected $fillable = ['url','content','op1','op2','op3','answer','active'];
-	 protected $attributes = [
-        'active' => false,
-    ];
+	protected $fillable = ['url','content','op1','op2','op3','answer','active','questiongroup_id'];
+	
     use HasFactory;
 }
