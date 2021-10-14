@@ -17,9 +17,9 @@ class CreateQuestionsTable extends Migration
             $table->id();
             $table->string('url')->nullable();
             $table->string('content');
-            $table->string('op1');
-            $table->string('op2');
-            $table->string('op3');
+            $table->string('op1')->nullable();
+            $table->string('op2')->nullable();
+            $table->string('op3')->nullable();
             $table->string('answer');
             $table->integer('questiongroup_id');
             $table->timestamps();

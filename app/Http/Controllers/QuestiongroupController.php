@@ -23,7 +23,7 @@ class QuestiongroupController extends Controller
     
     public function store(Request $request)
     {
-        Questiongroup::create(['title'=>$request->title]);
+        Questiongroup::create(['title'=>$request->title,'questiontype'=>$request->questiontype]);
         return redirect()->back()->with(['status'=>'success','message'=>'تم']);
     }
 

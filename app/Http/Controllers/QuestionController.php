@@ -28,20 +28,21 @@ class QuestionController extends Controller
 
     public function store(Request $request)
     {
-
+        $this->validate($request,['content'=>'required']);
+// return $request->all();
         Question::create($request->all());
         return redirect()->back()->with(['status'=>'success','message'=>'تم']);
     }
 
     public function show(Question $question)
     {
-        return view('question.show',compact('question'));
+        return view('questiongroup.question.show',compact('question'));
     }
 
     public function delete(Question $question)
     {
         $question->delete();
-        return redirect(route('question.index'))->with(['status'=>'success','message'=>'تم']);
+        return redirect(route('questiongroup.create'))->with(['status'=>'success','message'=>'تم']);
     }
 
     

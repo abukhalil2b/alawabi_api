@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Questiongroup extends Model
 {
     use HasFactory;
-    protected $fillable = ['title','active'];
+    protected $fillable = ['title','active','questiontype'];
     protected $attributes = [
         'active' => false,
     ];

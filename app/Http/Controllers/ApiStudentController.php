@@ -29,9 +29,14 @@ class ApiStudentController extends Controller
                 $status='alreadyAnswered';
                 $yourAnswers = json_decode($alreadyAnswered->answers);
                 
-                foreach($questiongroup->questions()->get() as $key => $question){
-                    array_push($options, $question[$yourAnswers[$key]]);
+                if($questiongroup->questiontype=='multichoice'){
+                    foreach($questiongroup->questions()->get() as $key => $question){
+                        array_push($options, $question[$yourAnswers[$key]]);
+                    }
+                }else{
+                    $options=$yourAnswers;
                 }
+                
             }
         }else{
             $status='noQuestion';
@@ -43,6 +48,7 @@ class ApiStudentController extends Controller
 
         return [
             'studentInfoNeedUpdate'=>$studentInfoNeedUpdate,
+            'questiongroup'=>$questiongroup,
             'status'=>$status,
             'lastActiveQuestions'=>QuestionResource::collection($lastActiveQuestions),
             'yourAnswers'=>$options,
@@ -126,13 +132,14 @@ class ApiStudentController extends Controller
         $answers = $questiongroup->questions()->get();
         
         $correct = 1;
+
         $recievedAnswers = json_decode($request->answers);
-        
         foreach ($recievedAnswers as $key => $recievedAnswer) {
             if($recievedAnswer != $answers[$key]['answer']){
                 $correct = 0;
             }
-        }
+        } 
+       
        
         $alreadyAnswered = Answer::where(['questiongroup_id'=>$questiongroup->id,'phone'=>$student->phone])->first();
 

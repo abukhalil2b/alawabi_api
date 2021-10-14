@@ -16,6 +16,7 @@ class CreateQuestiongroupsTable extends Migration
         Schema::create('questiongroups', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('questiontype')->default('multichoice');
             $table->boolean('active')->default(false);
             $table->timestamps();
         });
