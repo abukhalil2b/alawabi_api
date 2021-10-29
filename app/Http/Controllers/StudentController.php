@@ -81,16 +81,21 @@ class StudentController extends Controller
     }
 
  
-    public function lot()
+    public function dashboard()
     {
-        $answers = Answer::where('correct',1)->get();
-        return view('lot.answer',compact('answers'));
+        return view('answer.dashboard');
     }
 
-    public function numbers()
+    public function allNumbers()
+    {
+        $numbers = Answer::groupBy('phone')->select('phone')->get();
+        return view('answer.numbers',compact('numbers'));
+    }
+
+    public function correctNumbers()
     {
         $numbers = Answer::where('correct',1)->get();
-        return view('lot.numbers',compact('numbers'));
+        return view('answer.numbers',compact('numbers'));
     }
 
     public function deleteAllAnswer(Request $request)

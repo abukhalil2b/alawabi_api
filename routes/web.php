@@ -48,9 +48,10 @@ Route::get('answer/index/{questiongroup}',[StudentController::class,'answerIndex
 Route::post('answer/delete/{questiongroup}',[StudentController::class,'answerDelete'])->name('answer.delete');
 Route::post('deleteAllAnswer',[StudentController::class,'deleteAllAnswer'])->name('deleteAllAnswer');
 
-//lot
-Route::get('answer/lot',[StudentController::class,'lot'])->name('answer.lot');
-Route::get('answer/numbers',[StudentController::class,'numbers'])->name('answer.numbers');
+//answer
+Route::get('answer/dashboard',[StudentController::class,'dashboard'])->name('answer.dashboard');
+Route::get('answer/correct_numbers',[StudentController::class,'correctNumbers'])->name('answer.correct_numbers');
+Route::get('answer/all_numbers',[StudentController::class,'allNumbers'])->name('answer.all_numbers');
 
 
 //questiongroup
