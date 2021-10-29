@@ -10,6 +10,7 @@
 		</div>
 		<center class="bar mt-3">
 			<h3 class="text-blue-600">{{$questiongroup->title}}</h3>
+			عدد المشاركين في هذه الأسئلة: {{count($answers)}}
 		</center>
 
 		<table class="table table-bordered mt-3">

@@ -38,6 +38,7 @@
 	<hr>
 	<a class="m-3" href="{{route('student.numberlist')}}">numberlist</a>
 	<a class="m-3" href="{{route('student.info')}}">info</a>
+	<a class="m-3" href="{{route('student.info_phone_only')}}">info_phone_only</a>
 	<hr>
 
 	<div class="container">

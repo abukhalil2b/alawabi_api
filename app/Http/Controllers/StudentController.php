@@ -114,4 +114,12 @@ class StudentController extends Controller
         $students = Student::where('name','<>',null)->get();
         return view('student.info',compact('students'));
     }
+
+    public function infoPhoneOnly()
+    {
+        $students = Student::where('name','<>',null)->get();
+        return view('student.info_phone_only',compact('students'));
+    }
+
+    
 }

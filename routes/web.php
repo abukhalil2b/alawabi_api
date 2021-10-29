@@ -27,6 +27,7 @@ Route::post("student/store",[StudentController::class,'store'])->name('student.s
 Route::post("student/search",[StudentController::class,'search'])->name('student.search');
 Route::get("student/numberlist",[StudentController::class,'numberlist'])->name('student.numberlist');
 Route::get("student/info",[StudentController::class,'info'])->name('student.info');
+Route::get("student/info_phone_only",[StudentController::class,'infoPhoneOnly'])->name('student.info_phone_only');
 
 //questopm
 Route::get('question/{questiongroup}/index',[QuestionController::class,'index'])->name('question.index');

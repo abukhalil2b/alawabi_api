@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html dir="rtl">
+<html >
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,7 +8,7 @@
 </head>
 <body>
 	@foreach($students as $student)
-		<div>{{$student->name}} - {{$student->state}} - {{$student->phone}}  - {{$student->password}}</div>
+		<div>{{$student->phone}},</div>
 	@endforeach
 </body>
 </html>
