@@ -21,7 +21,7 @@
 				border:1px solid #eee;
 				padding: 5px;
 				border-radius:4px;
-				box-shadow: 0px 0px 2px 0px #afb0b1;
+				box-shadow: 0px 2px 10px 0px #afb0b1;
 			}
 			.container{
 				padding: 10px;
@@ -58,19 +58,18 @@
         <!-- Fonts -->
 
         <!-- Styles -->
-		<!-- CSS only -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+		<link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 
         <!-- Scripts -->
-    </head>
-    <body >
+    </head >
+    <body style="text-align:right !important; direction: rtl !important;" >
     	<div class="container">
 			@if(session('status'))
 			<h4  class="bar2 {{session('status')}}">{{session('message')}}</h4>
 			@endif
 			@if($errors->any())
 			@foreach($errors->all() as $error)
-			<div>{{$error}}</div>
+			<div class="alert alert-danger">{{$error}}</div>
 			@endforeach
 			@endif
     	</div>	

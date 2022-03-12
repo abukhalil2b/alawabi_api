@@ -16,6 +16,7 @@ class QuestiongroupController extends Controller
     
     public function create()
     {
+
         $questiongroups = Questiongroup::all();
         return view('questiongroup.create',compact('questiongroups'));
     }
@@ -23,6 +24,7 @@ class QuestiongroupController extends Controller
     
     public function store(Request $request)
     {
+        $this->validate($request,['title'=>'required']);
         Questiongroup::create(['title'=>$request->title,'questiontype'=>$request->questiontype]);
         return redirect()->back()->with(['status'=>'success','message'=>'تم']);
     }
