@@ -55,7 +55,7 @@
 	</div>
 
 	<div class="container">
-		<div class="bar">عدد الطلاب: {{count($students)}}</div>
+		<div class="bar">عدد المشتركين: {{count($students)}}</div>
 		<table class=" text-xs table-bordered table">
 			<tr>
 				<td>التسلسل</td>

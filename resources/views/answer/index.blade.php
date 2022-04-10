@@ -16,7 +16,7 @@
 		<table class="table table-bordered mt-3">
 			<tr>
 				<td>التسلسل</td>
-				<td>هاتف الطالب</td>
+				<td>هاتف المشارك</td>
 				<td>هل صحيحة</td>
 				<td>وقت الإرسال</td>
 			</tr>
