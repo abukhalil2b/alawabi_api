@@ -23,6 +23,17 @@ class StudentController extends Controller
         return view('student.index',compact('students','states'));
     }
 
+    public function studentIndex($withInfo)
+    {
+        if($withInfo==1){
+            $students = Student::whereNotNull('name')->get();
+        }else if($withInfo==0){
+            $students = Student::whereNull('name')->get();
+        }
+        
+        return view('student.student_index',compact('students'));
+    }
+
     public function store(Request $request)
     {
         $this->validate($request,['phone'=>'required|unique:students']);
@@ -33,10 +44,8 @@ class StudentController extends Controller
 
     public function search(Request $request)
     {
-        $states = State::all();
-        $this->validate($request,['phone'=>'required']);
         $students = Student::where('phone', 'like', '%' . $request->phone . '%')->get();
-        return view('student.index',compact('students','states'));
+        return view('student.search_result',compact('students'));
     }
 
  
@@ -88,13 +97,13 @@ class StudentController extends Controller
 
     public function allNumbers()
     {
-        $numbers = Answer::groupBy('phone')->select('phone')->get();
+        $numbers = Answer::groupBy('phone')->pluck('phone');
         return view('answer.numbers',compact('numbers'));
     }
 
     public function correctNumbers()
     {
-        $numbers = Answer::where('correct',1)->get();
+        $numbers = Answer::where('correct',1)->pluck('phone');
         return view('answer.numbers',compact('numbers'));
     }
 
@@ -114,17 +123,8 @@ class StudentController extends Controller
         return view('student.numberlist',compact('numberlist'));
     }
 
-    public function info()
-    {
-        $students = Student::where('name','<>',null)->get();
-        return view('student.info',compact('students'));
-    }
+   
 
-    public function infoPhoneOnly()
-    {
-        $students = Student::where('name','<>',null)->get();
-        return view('student.info_phone_only',compact('students'));
-    }
 
     
 }

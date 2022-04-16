@@ -9,11 +9,17 @@
 	<hr>
 
 	<div class="mt-5">
-		<a class="btn btn-success" href="{{route('answer.correct_numbers')}}">سحب أرقام الهواتف (الاجابات الصحيحة)</a>
+		<a class="btn btn-success" href="{{route('answer.correct_numbers')}}">
+		سحب أرقام الهواتف (الاجابات الصحيحة)
+		لعمل القرعة
+		</a>
 	</div>
 
 	<div class="mt-5">
-		<a class="btn btn-success" href="{{route('answer.all_numbers')}}">سحب أرقام الهواتف (الكل) بدون تكرار</a>
+		<a class="btn btn-success" href="{{route('answer.all_numbers')}}">
+		سحب أرقام الهواتف (الكل) بدون تكرار
+		لمعرفة المشاركين
+		</a>
 	</div>
 
 	</div>

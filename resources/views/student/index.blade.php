@@ -35,11 +35,14 @@
 		</form>
 	</div>
 
-	<hr>
-	<a class="m-3" href="{{route('student.numberlist')}}">numberlist</a>
-	<a class="m-3" href="{{route('student.info')}}">info</a>
-	<a class="m-3" href="{{route('student.info_phone_only')}}">info_phone_only</a>
-	<hr>
+	<center>
+		<div class="bar">عدد المشتركين: {{count($students)}}</div>
+	</center>
+	<center class="bar mt-3">
+		<a class="m-3" href="{{route('student.numberlist')}}">نسخة احتياطية من الأرقام</a>
+		<a class="m-3" href="{{route('student.student_index',1)}}">المشاركين المحدثين بياناتهم</a>
+		<a class="m-3" href="{{route('student.student_index',0)}}">المشاركين الغير محدثين بياناتهم</a>
+	</center>
 
 	<div class="container">
 		<form action="{{route('student.search')}}" method="post">
@@ -52,56 +55,9 @@
 				<button class="btn btn-info"><b>بحث </b></button>
 			</div>
 		</form>
+		
 	</div>
 
-	<div class="container">
-		<div class="bar">عدد المشتركين: {{count($students)}}</div>
-		<table class=" text-xs table-bordered table">
-			<tr>
-				<td>التسلسل</td>
-				<td>الإسم</td>
-				<td>الهاتف</td>
-				<td>الولاية</td>
-				<td>كلمة المرور</td>
-				<td>إدارة</td>
-			</tr>
-			@foreach($students as $student)
-			<tr>
-				<td>{{$student->id}}</td>
-				<td>{{$student->name}}</td>
-				<td>
-					{{$student->phone}}
-					
-				</td>
-				<td>@if($student->state){{$student->state->name}}@endif</td>
-				<td>{{$student->password}}</td>
-				<td>
-					<a class="mt-2" href="{{route('student.edit',['student'=>$student->id])}}">تعديل</a>
 
-					<div class="my-3" onClick="sendMessage({{$student->phone}})">
-						رسالة تذكير
-					</div>
-					<div class="mt-2">
-						<a href="{{route('student.show_delete_form',['student'=>$student->id])}}">حذف</a>
-					</div>
-				</td>
-			</tr>
-			@endforeach
-		</table>
-	</div>
-
-<script>
-	const sendMessage = (number)=>{
-	var url='https://api.whatsapp.com/send';
-	var message=encodeURIComponent(`السلام عليكم.
-لقد مر الأسبوع الأول  على المسابقة الثقافية  التي تنظمها اللجنة الثقافية بولاية العوابي وأنت لم تشارك معنا هذا العام. 
-اذا كنت تود المشاركة ما عليك إلا دخول البرنامج الإلكتروني وتكتب رقم هاتفك في كل الحقول ثم عندما تدخل تقوم بتحديث بياناتك.
-قم بحفظ هذا الرقم حتى تصلك الرسائل الجماعية.
-رابط البرنامج:
-https://al-awabi.web.app`);
-	window.open(url + `?phone=968${number}&text=${message}`)		
-	}
-
-</script>
 
 @endsection

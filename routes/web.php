@@ -26,15 +26,25 @@ Route::get('student/index',[StudentController::class,'index'])->name('student.in
 Route::post("student/store",[StudentController::class,'store'])->name('student.store');
 Route::post("student/search",[StudentController::class,'search'])->name('student.search');
 Route::get("student/numberlist",[StudentController::class,'numberlist'])->name('student.numberlist');
-Route::get("student/info",[StudentController::class,'info'])->name('student.info');
-Route::get("student/info_phone_only",[StudentController::class,'infoPhoneOnly'])->name('student.info_phone_only');
+Route::get("student/student_index/{withInfo}",[StudentController::class,'studentIndex'])->name('student.student_index');
 
-//questopm
-Route::get('question/{questiongroup}/index',[QuestionController::class,'index'])->name('question.index');
-Route::post('question/store',[QuestionController::class,'store'])->name('question.store');
+//question
+Route::get('question/index',[QuestionController::class,'index'])
+->name('question.index');
 
-Route::get('question/{question}/show',[QuestionController::class,'show'])->name('question.show');
-Route::get('question/{question}/delete',[QuestionController::class,'delete'])->name('question.delete');
+Route::get('questiongroup/{questiongroup}/index',[QuestionController::class,'questiongroupIndex'])
+->name('questiongroup.question.index');
+
+Route::post('question/store',[QuestionController::class,'store'])
+->name('question.store');
+
+
+Route::get('question/{question}/show',[QuestionController::class,'show'])
+->name('question.show');
+
+Route::get('question/{question}/delete',[QuestionController::class,'delete'])
+->name('question.delete');
+
 
 //sponser
 Route::get('sponser/index',[SponserController::class,'index'])->name('sponser.index');
@@ -55,8 +65,23 @@ Route::get('answer/all_numbers',[StudentController::class,'allNumbers'])->name('
 
 
 //questiongroup
-Route::get('questiongroup/create',[QuestiongroupController::class,'create'])->name('questiongroup.create');
-Route::post('questiongroup/store',[QuestiongroupController::class,'store'])->name('questiongroup.store');
-Route::get('questiongroup/{questiongroup}/toggle',[QuestiongroupController::class,'toggle'])->name('questiongroup.toggle');
+Route::post('questiongroup/update/{questiongroup}',[QuestiongroupController::class,'update'])
+->name('questiongroup.update');
+
+Route::get('questiongroup/edit/{questiongroup}',[QuestiongroupController::class,'edit'])
+->name('questiongroup.edit');
+
+Route::get('questiongroup/destroy/{questiongroup}',[QuestiongroupController::class,'destroy'])
+->name('questiongroup.destroy');
+
+Route::get('questiongroup/create',[QuestiongroupController::class,'create'])
+->name('questiongroup.create');
+
+Route::post('questiongroup/store',[QuestiongroupController::class,'store'])
+->name('questiongroup.store');
+
+Route::get('questiongroup/{questiongroup}/toggle',[QuestiongroupController::class,'toggle'])
+->name('questiongroup.toggle');
+
 
 

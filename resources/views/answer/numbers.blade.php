@@ -7,7 +7,7 @@
 </head>
 <body>
 	@foreach($numbers as $number)
-	<div>{{$number->phone}},</div>
+	<div>{{$number}},</div>
 	@endforeach
 </body>
 </html>

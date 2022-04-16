@@ -17,8 +17,13 @@
 
 	<div class="container">
 		@foreach($questiongroups as $questiongroup)
+
 		<div class="bar mt-5  {{$questiongroup->active==1?'bg-lightgreen':'bg-black'}}">
-			<a class="mt-5 btn btn-sm btn-outline-info"  href="{{route('question.index',['questiongroup'=>$questiongroup->id])}}">
+			<a  onclick="return confirm('Are you sure?')"
+			 class="mr-3" href="{{route('questiongroup.destroy',$questiongroup->id)}}">حذف</a>
+			<a class="mr-3" href="{{route('questiongroup.edit',$questiongroup->id)}}">تعديل</a>
+			<a class="mt-5 btn btn-sm btn-outline-info"  
+				href="{{route('questiongroup.question.index',['questiongroup'=>$questiongroup->id])}}">
 				{{$questiongroup->title}}
 			</a>
 			<a class="mt-5 btn btn-sm btn-outline-warning" href="{{route('questiongroup.toggle',['questiongroup'=>$questiongroup->id])}}">تعطيل وتغعيل </a>

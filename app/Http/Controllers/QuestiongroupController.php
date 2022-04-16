@@ -33,19 +33,24 @@ class QuestiongroupController extends Controller
     
     public function edit(Questiongroup $questiongroup)
     {
-        //
+        return view('questiongroup.edit',compact('questiongroup'));
     }
 
    
     public function update(Request $request, Questiongroup $questiongroup)
     {
-        //
+        $questiongroup->update($request->all());
+        return redirect()
+        ->route('questiongroup.create')
+        ->with(['status'=>'success','message'=>'تم']);
     }
 
     
     public function destroy(Questiongroup $questiongroup)
     {
-        //
+        $questiongroup->delete();
+        return back()
+        ->with(['status'=>'success','message'=>'تم']);
     }
 
 
