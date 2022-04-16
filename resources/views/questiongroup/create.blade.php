@@ -26,8 +26,10 @@
 				href="{{route('questiongroup.question.index',['questiongroup'=>$questiongroup->id])}}">
 				{{$questiongroup->title}}
 			</a>
-			<a class="mt-5 btn btn-sm btn-outline-warning" href="{{route('questiongroup.toggle',['questiongroup'=>$questiongroup->id])}}">تعطيل وتغعيل </a>
-			<a class="mt-5 btn btn-sm btn-outline-primary" href="{{route('answer.index',['questiongroup'=>$questiongroup->id])}}">الإجابات</a>
+			<a class="mt-5 btn btn-sm btn-outline-warning" 
+			href="{{route('questiongroup.toggle',['questiongroup'=>$questiongroup->id])}}">تعطيل وتغعيل </a>
+			<a class="mt-5 btn btn-sm btn-outline-primary" 
+			href="{{route('answer.index',['questiongroup'=>$questiongroup->id])}}">الإجابات</a>
 		</div>
 		
 		@endforeach

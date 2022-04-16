@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Question;
 use App\Models\Questiongroup;
 use Illuminate\Http\Request;
 
@@ -49,6 +50,7 @@ class QuestiongroupController extends Controller
     public function destroy(Questiongroup $questiongroup)
     {
         $questiongroup->delete();
+        Question::where('questiongroup_id',$questiongroup->id)->delete();
         return back()
         ->with(['status'=>'success','message'=>'تم']);
     }
