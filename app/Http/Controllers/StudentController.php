@@ -9,7 +9,7 @@ use App\Models\Question;
 use App\Models\State;
 use App\Models\Whatsapp;
 use Illuminate\Http\Request;
-
+use DB;
 class StudentController extends Controller
 {
     function __construct()
@@ -119,21 +119,32 @@ class StudentController extends Controller
     }
 
     
-    public function numberlist()
-    {
-        $numberlist = Student::all();
-        return view('student.numberlist',compact('numberlist'));
-    }
+    
 
    public function byState()
     {
-        $students = Student::groupBy('id','state_id')
-       ->selectRaw('count(id) as total, state_id as state')
-       ->get();
-   // return $students;
-        return view('student.by_state',compact('students'));
+        
+ 
+        return view('student.by_state');
     }
 
 
+    public function backupStudent()
+    {
+        $numberlist = Student::all();
+        return view('backup.student',compact('numberlist'));
+    }
+
+    public function backupQuestiongroup()
+    {
+        $questiongroups = Questiongroup::all();
+        return view('backup.questiongroup',compact('questiongroups'));
+    }
+
+    public function backupQuestion()
+    {
+        $questions = Question::all();
+        return view('backup.question',compact('questions'));
+    }
     
 }

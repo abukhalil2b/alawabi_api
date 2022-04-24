@@ -18,15 +18,21 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+//backup
+Route::get("backup/student",[StudentController::class,'backupStudent'])->name('backup.student');
+Route::get("backup/questiongroup",[StudentController::class,'backupQuestiongroup'])->name('backup.questiongroup');
+Route::get("backup/question",[StudentController::class,'backupQuestion'])->name('backup.question');
 
-Route::get('student/{student}/show_delete_form',[StudentController::class,'showDeleteForm'])->name('student.show_delete_form');
+//student
+Route::get('student/{student}/show_delete_form',[StudentController::class,'showDeleteForm'])
+->name('student.show_delete_form');
 Route::get('student/{student}/delete',[StudentController::class,'delete'])->name('student.delete');
 Route::get('student/{student}/edit',[StudentController::class,'edit'])->name('student.edit');
 Route::post('student/{student}/update',[StudentController::class,'update'])->name('student.update');
 Route::get('student/index',[StudentController::class,'index'])->name('student.index');
 Route::post("student/store",[StudentController::class,'store'])->name('student.store');
 Route::post("student/search",[StudentController::class,'search'])->name('student.search');
-Route::get("student/numberlist",[StudentController::class,'numberlist'])->name('student.numberlist');
+
 Route::get("student/student_index/{withInfo}",[StudentController::class,'studentIndex'])->name('student.student_index');
 
 Route::get("student/by_state",[StudentController::class,'byState'])->name('student.by_state');

@@ -49,7 +49,9 @@
 		</a>
 	</center>
 	<center class="bar mt-3">
-		<a class="m-3" href="{{route('student.numberlist')}}">نسخة احتياطية من الأرقام</a>
+		<a class="m-3" href="{{route('backup.student')}}">نسخة احتياطية من الأرقام</a>
+		<a class="m-3" href="{{route('backup.questiongroup')}}">نسخة احتياطية من تصنيف الأسئلة</a>
+		<a class="m-3" href="{{route('backup.question')}}">نسخة احتياطية من الأسئلة</a>
 		<a class="m-3" href="{{route('student.student_index',1)}}">المشاركين المحدثين بياناتهم</a>
 		<a class="m-3" href="{{route('student.student_index',0)}}">المشاركين الغير محدثين بياناتهم</a>
 	</center>
