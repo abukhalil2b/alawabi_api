@@ -1,0 +1,1 @@
+<img src="{{asset('img/muthqaf.png')}}" alt="" width="60">

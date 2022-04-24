@@ -6,6 +6,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\SponserController;
 use App\Http\Controllers\WinnerController;
 use App\Http\Controllers\QuestiongroupController;
+use App\Http\Controllers\WhatsappController;
 
 
 
@@ -27,6 +28,8 @@ Route::post("student/store",[StudentController::class,'store'])->name('student.s
 Route::post("student/search",[StudentController::class,'search'])->name('student.search');
 Route::get("student/numberlist",[StudentController::class,'numberlist'])->name('student.numberlist');
 Route::get("student/student_index/{withInfo}",[StudentController::class,'studentIndex'])->name('student.student_index');
+
+Route::get("student/by_state",[StudentController::class,'byState'])->name('student.by_state');
 
 //question
 Route::get('question/index',[QuestionController::class,'index'])
@@ -84,4 +87,11 @@ Route::get('questiongroup/{questiongroup}/toggle',[QuestiongroupController::clas
 ->name('questiongroup.toggle');
 
 
+//whatsapp
+Route::get('whatsapp/index',[WhatsappController::class,'index'])->name('whatsapp.index');
+Route::post('whatsapp/store',[WhatsappController::class,'store'])->name('whatsapp.store');
+Route::get('whatsapp/destroy/{whatsapp}',[WhatsappController::class,'destroy'])->name('whatsapp.destroy');
+Route::get('whatsapp/activate/{whatsapp}',[WhatsappController::class,'activate'])->name('whatsapp.activate');
+
+//SELECT state_id,COUNT(id) as total FROM `students` GROUP BY state_id;
 

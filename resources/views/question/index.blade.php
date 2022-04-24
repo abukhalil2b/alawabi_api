@@ -1,6 +1,4 @@
-@extends('layouts.master')
-@section('content')
-
+<x-app-layout>
 	<div class="container">
 		@foreach($questions as $question)
 		<div class="card card-body">
@@ -13,4 +11,5 @@
 		@endforeach
 	</div>
 
-@endsection
+
+</x-app-layout>

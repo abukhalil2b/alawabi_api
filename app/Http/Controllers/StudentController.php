@@ -7,6 +7,7 @@ use App\Models\Answer;
 use App\Models\Questiongroup;
 use App\Models\Question;
 use App\Models\State;
+use App\Models\Whatsapp;
 use Illuminate\Http\Request;
 
 class StudentController extends Controller
@@ -30,12 +31,13 @@ class StudentController extends Controller
         }else if($withInfo==0){
             $students = Student::whereNull('name')->get();
         }
-        
-        return view('student.student_index',compact('students'));
+        $whatsapp = Whatsapp::whereActive(1)->first();
+        return view('student.student_index',compact('students','whatsapp'));
     }
 
     public function store(Request $request)
     {
+        // return $request->all();
         $this->validate($request,['phone'=>'required|unique:students']);
         $request['password']= $request->phone;
         Student::create($request->all());
@@ -123,7 +125,14 @@ class StudentController extends Controller
         return view('student.numberlist',compact('numberlist'));
     }
 
-   
+   public function byState()
+    {
+        $students = Student::groupBy('id','state_id')
+       ->selectRaw('count(id) as total, state_id as state')
+       ->get();
+   // return $students;
+        return view('student.by_state',compact('students'));
+    }
 
 
     

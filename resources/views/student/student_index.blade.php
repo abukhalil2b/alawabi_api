@@ -30,7 +30,7 @@
 				<td>
 					<a class="mt-2" href="{{route('student.edit',['student'=>$student->id])}}">تعديل</a>
 
-					<div class="my-3" onClick="sendMessage({{$student->phone}})">
+					<div class="my-3" onClick="sendMessage({{$student->phone}})" >
 						رسالة تذكير
 					</div>
 					<div class="mt-2">
@@ -43,12 +43,11 @@
 	</div>
 
 <script>
+
 	const sendMessage = (number)=>{
+
 	var url='https://api.whatsapp.com/send';
-	var message=encodeURIComponent(`السلام عليكم.
-لقد مر الأسبوع الثاني  على المسابقة الثقافية  التي تنظمها اللجنة الثقافية بولاية العوابي وأنت لم تشارك معنا. 
-اذا كنت تود المشاركة ما عليك إلا دخول البرنامج الإلكتروني وتكتب رقم هاتفك في كل الحقول ثم عندما تدخل تقوم بتحديث بياناتك.
-قم بحفظ هذا الرقم حتى تصلك الرسائل الجماعية.
+	var message=encodeURIComponent(`{{$whatsapp->text}}
 رابط البرنامج:
 https://al-awabi.web.app`);
 	window.open(url + `?phone=968${number}&text=${message}`)		
