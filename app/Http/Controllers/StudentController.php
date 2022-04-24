@@ -26,10 +26,11 @@ class StudentController extends Controller
 
     public function studentIndex($withInfo)
     {
+
         if($withInfo==1){
-            $students = Student::whereNotNull('name')->get();
+            $students = Student::whereNotNull('state_id')->get();
         }else if($withInfo==0){
-            $students = Student::whereNull('name')->get();
+            $students = Student::whereNull('state_id')->get();
         }
         $whatsapp = Whatsapp::whereActive(1)->first();
         return view('student.student_index',compact('students','whatsapp'));

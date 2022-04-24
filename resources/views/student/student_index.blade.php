@@ -47,7 +47,7 @@
 	const sendMessage = (number)=>{
 
 	var url='https://api.whatsapp.com/send';
-	var message=encodeURIComponent(`{{$whatsapp->text}}
+	var message=encodeURIComponent(`{{$whatsapp?$whatsapp->text:''}}
 رابط البرنامج:
 https://al-awabi.web.app`);
 	window.open(url + `?phone=968${number}&text=${message}`)		
