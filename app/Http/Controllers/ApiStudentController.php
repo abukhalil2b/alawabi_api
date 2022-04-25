@@ -170,9 +170,15 @@ class ApiStudentController extends Controller
         return State::all();
     }
 
-    public function getAppVersion(){
-        return response(1 ,200);
+    public function studentByState()
+    {
+        $states = State::selectRaw('name')
+        ->withCount('students')
+        ->orderBy('students_count','desc')
+        ->get();
+        $totalStudent = Student::whereNull('state_id')->count();
+        $response['states'] =  $states;
+        $response['totalStudent'] =  $totalStudent;
+        return response($response ,200);
     }
-
-
 }

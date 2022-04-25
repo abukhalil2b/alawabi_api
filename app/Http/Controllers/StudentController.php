@@ -125,27 +125,14 @@ class StudentController extends Controller
    public function byState()
     {
         
- 
-        return view('student.by_state');
+        $states = State::selectRaw('name')
+        ->withCount('students')
+        ->orderBy('students_count','desc')
+        ->get();
+        $totalStudent = Student::whereNull('state_id')->count();
+        return view('student.by_state',compact('states','totalStudent'));
     }
 
 
-    public function backupStudent()
-    {
-        $numberlist = Student::all();
-        return view('backup.student',compact('numberlist'));
-    }
-
-    public function backupQuestiongroup()
-    {
-        $questiongroups = Questiongroup::all();
-        return view('backup.questiongroup',compact('questiongroups'));
-    }
-
-    public function backupQuestion()
-    {
-        $questions = Question::all();
-        return view('backup.question',compact('questions'));
-    }
     
 }

@@ -51,7 +51,19 @@ class QuestionController extends Controller
         return redirect(route('questiongroup.create'))->with(['status'=>'success','message'=>'تم']);
     }
 
-    
+    public function edit(Question $question)
+    {
+        $questiongroups = Questiongroup::all();
+        return view('question.edit',compact('question','questiongroups'));
+    }
+
+    public function update(Request $request,Question $question)
+    {
+        // return $request->all();
+        $this->validate($request,['content'=>'required','answer'=>'required','questiongroup_id'=>'required']);
+        $question->update($request->all());
+        return redirect()->back()->with(['status'=>'success','message'=>'تم']);
+    }
 
 
 }

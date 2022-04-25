@@ -9,5 +9,7 @@ class Question extends Model
 {
 	protected $fillable = ['url','content','op1','op2','op3','answer','active','questiongroup_id'];
 	
-    use HasFactory;
+    public function questiongroup(){
+    	return $this->belongsTo(Questiongroup::class);
+    }
 }

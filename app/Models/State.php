@@ -12,4 +12,8 @@ class State extends Model
     ];
     public $timestamps=false;
     use HasFactory;
+
+    public function students(){
+        return $this->hasMany(Student::class);
+    }
 }

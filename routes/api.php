@@ -34,5 +34,9 @@ Route::group(['middleware'=>'auth:sanctum'],function(){
 Route::post("student/login",[ApiStudentController::class,'login']);
 
 Route::get("sponsors",[ApiSponsorController::class,'sponsor']);
-Route::get("get_app_version",[ApiStudentController::class,'getAppVersion']);
 Route::get("states",[ApiStudentController::class,'states']);
+
+Route::get('student/by_state',[ApiStudentController::class,'studentByState']);
+
+
+

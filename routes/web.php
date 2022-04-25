@@ -18,10 +18,6 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
-//backup
-Route::get("backup/student",[StudentController::class,'backupStudent'])->name('backup.student');
-Route::get("backup/questiongroup",[StudentController::class,'backupQuestiongroup'])->name('backup.questiongroup');
-Route::get("backup/question",[StudentController::class,'backupQuestion'])->name('backup.question');
 
 //student
 Route::get('student/{student}/show_delete_form',[StudentController::class,'showDeleteForm'])
@@ -54,7 +50,11 @@ Route::get('question/{question}/show',[QuestionController::class,'show'])
 Route::get('question/{question}/delete',[QuestionController::class,'delete'])
 ->name('question.delete');
 
+Route::get('question/edit/{question}',[QuestionController::class,'edit'])
+->name('question.edit');
 
+Route::post('question/update/{question}',[QuestionController::class,'update'])
+->name('question.update');
 //sponser
 Route::get('sponser/index',[SponserController::class,'index'])->name('sponser.index');
 Route::post("sponser/store",[SponserController::class,'store'])->name('sponser.store');
