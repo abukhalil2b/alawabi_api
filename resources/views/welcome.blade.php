@@ -15,31 +15,51 @@
         </style>
 
         <style>
-            body {
-                font-family: 'Nunito';
+            .body {
+                background-color: #3a4040;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
             }
+            a#abtn{
+                font-weight: bolder;
+                color: brown;
+                font-size: 45px;
+                text-decoration: none;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: wheat;
+                width: 400px;
+                height: 80px;
+                border-radius: 9px;
+		    }
         </style>
     </head>
-    <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
-            
+    <body>
+        <header style="display:flex; gap:15px">
+            @if (Route::has('login'))
+            <div >
+                @auth
+                    <a href="{{ url('/dashboard') }}">Dashboard</a>
+                @else
+                    <a href="{{ route('login') }}">Log in</a>
 
-            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                 @if (Route::has('login'))
-                <div class=" px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Log in</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}" >Register</a>
+                    @endif
+                @endauth
             </div>
+            @endif
+            <a href="/show_opening">show_opening</a>
+        </header>
+
+        <div class="body">
+            
+            <a id="abtn"  href="{{route('open_event')}}">تدشين المسابقة</a>
+
         </div>
+
     </body>
 </html>

@@ -7,13 +7,29 @@ use App\Http\Controllers\SponserController;
 use App\Http\Controllers\WinnerController;
 use App\Http\Controllers\QuestiongroupController;
 use App\Http\Controllers\WhatsappController;
-
-
+use App\Http\Controllers\OpenEventController;
+use DB;
 
 
 Route::get('/', function () {
+    //reset status value
+    DB::table('open_event')->update(['status'=>0]);
     return view('welcome');
 });
+
+Route::get('/open_event', function () {
+    //perform open event
+    DB::table('open_event')->update(['status'=>1]);
+})->name('open_event');
+
+Route::get('/show_opening', function () {
+    //show to audience
+    return view('show_opening');
+});
+
+Route::get('/check_opening', function () {
+    return DB::table('open_event')->first();
+})->name('check_opening');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
@@ -100,4 +116,3 @@ Route::get('whatsapp/destroy/{whatsapp}',[WhatsappController::class,'destroy'])-
 Route::get('whatsapp/activate/{whatsapp}',[WhatsappController::class,'activate'])->name('whatsapp.activate');
 
 //SELECT state_id,COUNT(id) as total FROM `students` GROUP BY state_id;
-

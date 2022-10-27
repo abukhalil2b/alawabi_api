@@ -3832,6 +3832,15 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+// window.Echo.channel('my-channel').listen('.my-event', function (data) {
+//    console.log(data)
+//    if(data.message =='open'){
+//     var img = document.getElementById('img')
+//     var abtn = document.getElementById('abtn')
+//     img.style.display = 'block'
+//     abtn.style.display = 'none'
+//    }
+// });
 
 /***/ }),
 

@@ -6,5 +6,6 @@
         <a class="shadow-xl px-3" href="{{route('answer.dashboard')}}">الإجابات</a>
         <a class="shadow-xl px-3" href="{{route('sponser.index')}}">الداعمون</a>
         <a class="shadow-xl px-3" href="{{route('whatsapp.index')}}">رسائل الواتسأب</a>
+        
     </x-slot>
 </x-app-layout>
