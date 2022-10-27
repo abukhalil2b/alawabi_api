@@ -8,7 +8,7 @@ use App\Http\Controllers\WinnerController;
 use App\Http\Controllers\QuestiongroupController;
 use App\Http\Controllers\WhatsappController;
 use App\Http\Controllers\OpenEventController;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 
 Route::get('/', function () {
