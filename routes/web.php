@@ -12,24 +12,8 @@ use Illuminate\Support\Facades\DB;
 
 
 Route::get('/', function () {
-    //reset status value
-    DB::table('open_event')->update(['status'=>0]);
     return view('welcome');
 });
-
-Route::get('/open_event', function () {
-    //perform open event
-    DB::table('open_event')->update(['status'=>1]);
-})->name('open_event');
-
-Route::get('/show_opening', function () {
-    //show to audience
-    return view('show_opening');
-});
-
-Route::get('/check_opening', function () {
-    return DB::table('open_event')->first();
-})->name('check_opening');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
