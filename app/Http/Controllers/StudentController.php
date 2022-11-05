@@ -51,7 +51,12 @@ class StudentController extends Controller
         return view('student.search_result',compact('students'));
     }
 
- 
+    public function searchWinner()
+    {
+        return view('student.search_winner');
+    }
+
+    
     public function answerIndex(Questiongroup $questiongroup)
     {
         $answers = Answer::where('questiongroup_id',$questiongroup->id)->get();
