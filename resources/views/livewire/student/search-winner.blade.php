@@ -11,7 +11,6 @@
       <x-jet-button class="mt-3" wire:click="search">بحث</x-jet-button>
    </div>
    
-   
    <table class=" text-xs table-bordered table mt-3">
 			<tr>
 				<td>التسلسل</td>

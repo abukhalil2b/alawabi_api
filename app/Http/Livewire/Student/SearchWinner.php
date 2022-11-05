@@ -14,8 +14,10 @@ class SearchWinner extends Component
     public function search(){
 
         $numbers = explode("\n", $this->searchKey);
-
-        $this->students = Student::whereIn('phone',$numbers)->get();
+        $placeholders = implode(', ', array_fill(0, count($numbers), '?'));
+        $this->students = Student::whereIn('phone',$numbers)
+        ->orderByRaw("FIELD(phone, {$placeholders})", $numbers)
+        ->get();
     }
 
     public function render()
